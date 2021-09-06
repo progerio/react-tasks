@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './TaskItem.css';
 
 
-export default function TaskItem({ id, title, state}){
+export default function TaskItem({ id, title, state, onTaskUpdate}){
 
     const [ isEditing, setIsEditing ] = useState(false);
 
@@ -12,6 +12,7 @@ export default function TaskItem({ id, title, state}){
     const onTitleChange = (event) => {
         const newTitle = event.target.value;
         setEditableTitle(newTitle);
+        onTaskUpdate(id, newTitle, state)
     }
 
     const onKeyPressTitle = (event) => {
