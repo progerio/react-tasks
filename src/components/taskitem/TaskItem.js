@@ -21,10 +21,28 @@ export default function TaskItem({ id, title, state, onTaskUpdate}){
         }
     }
 
-    if(isEditing) {
-        return <input type="text" value={editableTitle} onChange={ onTitleChange} onKeyPress={onKeyPressTitle} /> 
+    const onTaskStateChange = (event) => {
+        onTaskUpdate(id, title, event.target.value)
     }
-    return <div onClick={(ev) => setIsEditing(true)} >{editableTitle}</div>
+
+    if(isEditing) {
+        return <input type="text" 
+                    value={editableTitle} 
+                    onChange={ onTitleChange} 
+                    onKeyPress={onKeyPressTitle} /> 
+    }else{
+        return (
+            <div>
+                <div onClick={(ev) => setIsEditing(true)} >{editableTitle}</div>
+                <select onChange={onTaskStateChange} value={state}>
+                    <option  value="Pendente">Pendente</option>
+                    <option  value="Fazendo">Fazendo</option>
+                    <option  value="Completo">Completo</option>
+                </select>
+            </div>
+        )
+    }
+  
    
 }
 

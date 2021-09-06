@@ -24,12 +24,14 @@ function App() {
        });
   }
 
-  const updateTask = (id, title, status) => {
-    console.log(id, title, status);
+  const updateTask = (id, title, state) => {
+    
     setTasks((existingTask) => {
+      
       return existingTask.map((task) =>{
           if(task.id === id){
-            return {...task, title, status}
+            console.log({...task, title, state});
+            return {...task, title, state}
           }else{
             return task;
           }
@@ -44,22 +46,22 @@ function App() {
         <TaskList 
             title={'Pendente'} 
             onAddTask={addTask} 
-            tasks={tasks.filter(t => t.state === 'Pendente')} 
             taskState={"Pendente"}
+            tasks={tasks.filter(t => t.state === 'Pendente')} 
             onTaskUpdate={updateTask}/>
 
         <TaskList 
             title={'Fazendo'} 
             onAddTask={addTask} 
-            tasks={tasks.filter(t => t.state === 'Fazendo')}
             taskState={"Fazendo"} 
+            tasks={tasks.filter(t => t.state === 'Fazendo')}
             onTaskUpdate={updateTask}/>
 
         <TaskList 
             title={'Completo'} 
             onAddTask={addTask} 
-            tasks={tasks.filter(t => t.state === 'Completo')}
             taskState={"Completo"}
+            tasks={tasks.filter(t => t.state === 'Completo')}
             onTaskUpdate={updateTask}/>
 
       </div>
