@@ -25,7 +25,7 @@ export default function TaskList({title ,taskState, onAddTask, tasks, onTaskUpda
                              />
                 })}
             </div>
-            <button onClick={addTask}>Adicionar tarefa</button>
+            <button className="btn" onClick={addTask}>Adicionar tarefa</button>
         </div>
     )
 }
