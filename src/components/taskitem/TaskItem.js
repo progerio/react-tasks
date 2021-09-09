@@ -30,10 +30,13 @@ export default function TaskItem({ id, title, state, onTaskUpdate, onDeleteTask}
     }
 
     if(isEditing) {
-        return <input type="text" 
+        return 
+        <div className="task-item">
+        <input type="text" 
                     value={editableTitle} 
                     onChange={ onTitleChange} 
-                    onKeyPress={onKeyPressTitle} /> 
+                    onKeyPress={onKeyPressTitle} />
+                    </div> 
     }else{
         return (
             <div className="task-item">
