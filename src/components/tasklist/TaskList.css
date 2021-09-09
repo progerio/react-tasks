@@ -21,6 +21,12 @@
     padding: 8px;
     display: flex;
     justify-content: center;
-    border-radius: 3px;
-    
+    border-radius: 3px;   
+}
+
+.taskList .content .empty-list{
+    text-align: center;
+    border: 1px dashed white;
+    border-radius: 4px;
+    padding: 4px;
 }

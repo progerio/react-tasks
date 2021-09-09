@@ -24,8 +24,10 @@ export default function TaskList({title ,taskState, onAddTask, tasks, onTaskUpda
                             onDeleteTask={onDeleteTask}
                              />
                 })}
+                { tasks.length === 0 && <div className="empty-list">Nenhuma Tarefa</div>}
+                <button className="btn" onClick={addTask}>Adicionar tarefa</button>
             </div>
-            <button className="btn" onClick={addTask}>Adicionar tarefa</button>
+         
         </div>
     )
 }
