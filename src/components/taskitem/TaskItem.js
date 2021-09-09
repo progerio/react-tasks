@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './TaskItem.css';
 
 
-export default function TaskItem({ id, title, state, onTaskUpdate}){
+export default function TaskItem({ id, title, state, onTaskUpdate, onDeleteTask}){
 
     const [ isEditing, setIsEditing ] = useState(false);
 
@@ -18,6 +18,10 @@ export default function TaskItem({ id, title, state, onTaskUpdate}){
     const onKeyPressTitle = (event) => {
         if(event.key  === 'Enter'){
             setIsEditing(false);
+            
+            if(editableTitle.length === 0){
+                onDeleteTask(id)
+            }
         }
     }
 
@@ -32,7 +36,7 @@ export default function TaskItem({ id, title, state, onTaskUpdate}){
                     onKeyPress={onKeyPressTitle} /> 
     }else{
         return (
-            <div>
+            <div className="task-item">
                 <div onClick={(ev) => setIsEditing(true)} >{editableTitle}</div>
                 <select onChange={onTaskStateChange} value={state}>
                     <option  value="Pendente">Pendente</option>
